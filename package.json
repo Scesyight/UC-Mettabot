@@ -1,0 +1,17 @@
+{
+  "name": "bot",
+  "version": "1.0.0",
+  "description": "bot.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Scesy",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.3.0",
+    "jimp": "^0.2.28",
+    "opusscript": "0.0.6",
+    "request": "^2.83.0"
+  }
+}
