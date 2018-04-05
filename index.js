@@ -1,13 +1,18 @@
 var Discord = require("discord.js");
-var Jimp = require("jimp");
 var fs = require('fs');
-var request = require("request");
+var Jimp = require("jimp");
+var request = require("request")
+
 const Prefix = "uc."
 const emojis = ["<:COMMON:431250043409006592>", "<:RARE:431250043647950859>", "<:EPIC:431250043266138115>", "<:LEGENDARY:431250043769585684>", "<:DETERMINATION:431250043287109646>"]
 const antiCard = [155, 156, 157, 158, 159, 189, 190, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 230, 231, 232, 233, 234];
 
-
 var bot = new Discord.Client;
+
+
+function rndInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
 
 request.get('https://api.undercards.net/api/v1/cards', function (error, response, body) {
     if (!error && response.statusCode == 200) {
@@ -99,11 +104,10 @@ request.get('https://api.undercards.net/api/v1/cards', function (error, response
 
                     message.channel.send(EmbedCard);
 
-                } else if (message.content.substring(Prefix.lenght + 5).startsWith("artifacts")) {
-                    return; //a faire
                 }
+
             }
-            
+
             if (message.content.startsWith(Prefix + "create")) {
                 if (message.content.startsWith(Prefix + "create deck")) {
                     var infos = message.content.substring(15).split(" ");
@@ -217,6 +221,7 @@ request.get('https://api.undercards.net/api/v1/cards', function (error, response
                     message.channel.send(resEmbed);
                 }
             }
+
         });
     }
 });
